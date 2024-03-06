@@ -10,8 +10,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"] // maintain the order of array i.e. first CSS will be converted to JS by "css-loader" and then it will be injected into DOM by "style-loader"
+                test: /\.scss$/,
+                use: [
+                "style-loader", // 3. injects js to DOM
+                "css-loader", // 2. turns css to commonJS
+                "sass-loader" // 1. turns sass to css
+            ] // maintain the order of array i.e. first CSS will be converted to JS by "css-loader" and then it will be injected into DOM by "style-loader"
             }
         ]
     }
