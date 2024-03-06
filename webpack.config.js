@@ -1,12 +1,16 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: "development", // dev - tells webpack to stop minifying or prod(default)
     entry: "./src/index.js",
     output: {
-        filename: "main.js", // the name of file in which minified code will be exported
+        filename: "main.[contenthash].js", // the name of file in which minified code will be exported
         path: path.resolve(__dirname, "dist") // tells the directory where to write the minified code
     },
+    plugins: [new HtmlWebpackPlugin({
+        template: "./src/template.html"
+    })],
     module: {
         rules: [
             {
